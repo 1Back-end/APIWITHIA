@@ -1,0 +1,186 @@
+{
+    "first_name": "David",
+    "last_name": "Johnson",
+    "email": "david.johnson@example.com",
+    "code_country": "+1",
+    "phone_number": "9876543210",
+    "full_phone_number": "+19876543210",
+    "address": "789 Maple Avenue, New York, USA",
+    "avatar_uuid": "avatar-uuid-example-3",
+    "cv_uuid": "cv-uuid-example-3",
+    "password": "securepass789",
+    "experiences": [
+      {
+        "job_title": "Software Engineer",
+        "company_name": "Tech Solutions Inc.",
+        "start_date": "2019-06-01",
+        "end_date": "2024-01-15",
+        "description": "Developed and maintained web applications using Python and JavaScript."
+      },
+      {
+        "job_title": "Backend Developer",
+        "company_name": "Innovatech",
+        "start_date": "2016-04-10",
+        "end_date": "2019-05-30",
+        "description": "Worked on API development and database optimization."
+      }
+    ]
+  }
+  {
+    "first_name": "Sophie",
+    "last_name": "Dubois",
+    "email": "sophie.dubois@example.com",
+    "code_country": "+33",
+    "phone_number": "612345678",
+    "full_phone_number": "+33612345678",
+    "address": "45 Rue de la Santé, Paris, France",
+    "avatar_uuid": "avatar-uuid-example-4",
+    "cv_uuid": "cv-uuid-example-4",
+    "password": "medicsecure123",
+    "experiences": [
+      {
+        "job_title": "Infirmière",
+        "company_name": "Hôpital Saint-Louis",
+        "start_date": "2018-09-01",
+        "end_date": "2024-02-15",
+        "description": "Prise en charge des patients en soins intensifs et assistance aux médecins."
+      },
+      {
+        "job_title": "Aide-soignante",
+        "company_name": "Clinique Pasteur",
+        "start_date": "2015-06-10",
+        "end_date": "2018-08-30",
+        "description": "Aide aux patients pour les soins quotidiens et surveillance des constantes vitales."
+      }
+    ]
+  }
+  {
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "email": "alice.smith@example.com",
+    "code_country": "+44",
+    "phone_number": "789456123",
+    "full_phone_number": "+44789456123",
+    "address": "456 Elm Street, London, UK",
+    "avatar_uuid": "avatar-uuid-example-2",
+    "cv_uuid": "cv-uuid-example-2",
+    "password": "mypassword456",
+    "experiences": [
+      {
+        "job_title": "Data Analyst",
+        "company_name": "DataCorp",
+        "start_date": "2020-05-15",
+        "end_date": "2023-08-30",
+        "description": "Analyzed large datasets and provided insights for business decisions."
+      },
+      {
+        "job_title": "Business Intelligence Analyst",
+        "company_name": "Insight Ltd",
+        "start_date": "2018-09-01",
+        "end_date": "2020-04-30",
+        "description": "Developed dashboards and reports using BI tools."
+      }
+    ]
+  }
+  {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "code_country": "+1",
+    "phone_number": "1234567890",
+    "full_phone_number": "+11234567890",
+    "address": "123 Main Street, Cityville, State",
+    "avatar_uuid": "avatar-uuid-example",
+    "cv_uuid": "cv-uuid-example",
+    "password": "securepassword123",
+    "experiences": [
+      {
+        "job_title": "Software Developer",
+        "company_name": "TechCorp",
+        "start_date": "2022-01-01",
+        "end_date": "2023-12-31",
+        "description": "Worked as a full-stack developer building web applications."
+      },
+      {
+        "job_title": "Backend Developer",
+        "company_name": "Web Solutions",
+        "start_date": "2021-06-01",
+        "end_date": "2021-12-31",
+        "description": "Developed backend APIs using Python and Django."
+      }
+    ]
+  }
+  {
+    "uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "email": "alice.smith@example.com",
+    "code_country": "+237",
+    "phone_number": "677889900",
+    "full_phone_number": "+237677889900",
+    "address": "Yaoundé, Cameroun",
+    "avatar_uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "cv_uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "is_new_user": false,
+    "experiences": [
+      {
+        "uuid": "123e4567-e89b-12d3-a456-426614174111",
+        "job_title": "Développeuse Full Stack",
+        "company_name": "TechCorp",
+        "start_date": "2022-01-01",
+        "end_date": "2023-06-01",
+        "description": "Développement d'applications web avec des technologies modernes.",
+        "candidate_uuid": "123e4567-e89b-12d3-a456-426614174000"
+      },
+      {
+        "uuid": "123e4567-e89b-12d3-a456-426614174112",
+        "job_title": "Ingénieure en cybersécurité",
+        "company_name": "CyberSafe",
+        "start_date": "2021-06-01",
+        "end_date": "2022-01-01",
+        "description": "Mise en place de protocoles de sécurité pour les systèmes.",
+        "candidate_uuid": "123e4567-e89b-12d3-a456-426614174000"
+      }
+    ],
+    "date_added": "2025-02-26T10:21:20.744Z",
+    "date_modified": "2025-02-26T10:21:20.744Z"
+  }
+  {
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "email": "alice.smith@example.com",
+    "code_country": "+237",
+    "phone_number": "677889900",
+    "full_phone_number": "+237677889900",
+    "address": "Yaoundé, Cameroun",
+    "avatar_uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "cv_uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "is_new_user": false,
+    "experiences": [
+      {
+        "job_title": "Développeuse Full Stack",
+        "company_name": "TechCorp",
+        "start_date": "2022-01-01",
+        "end_date": "2023-06-01",
+        "description": "Développement d'applications web avec des technologies modernes."
+      },
+      {
+        "job_title": "Ingénieure en cybersécurité",
+        "company_name": "CyberSafe",
+        "start_date": "2021-06-01",
+        "end_date": "2022-01-01",
+        "description": "Mise en place de protocoles de sécurité pour les systèmes."
+      }
+    ]
+  }
+            
+
+
+
+
+
+
+
+
+
+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
