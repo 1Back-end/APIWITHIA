@@ -47,6 +47,17 @@ class Experience(Base):
     date_added = Column(DateTime, nullable=False, default=datetime.now())
     date_modified = Column(DateTime, nullable=False, default=datetime.now())
 
+    @property
+    def years_of_experience(self):
+        """
+        Calcule le nombre d'années d'expérience en fonction des dates de début et de fin.
+        """
+        start_date = datetime.strptime(self.start_date, "%Y-%m-%d")  # Assurez-vous que le format est correct
+        end_date = datetime.strptime(self.end_date, "%Y-%m-%d") if self.end_date else datetime.now()
+
+        delta = end_date - start_date
+        return delta.days // 365  # Convertir le nombre de jours en années
+
 
 class Diploma(Base):
     __tablename__ = "diplomas"
