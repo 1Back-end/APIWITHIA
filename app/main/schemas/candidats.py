@@ -20,17 +20,17 @@ class ExperienceCreate(ExperienceBase):
 
 class Experience(ExperienceBase):
     uuid: str
-    candidate_uuid: str
+    # candidate_uuid: str
     model_config = ConfigDict(from_attributes=True)
 
 
 # --- Diploma Models ---
-# class DiplomaSlim(BaseModel):
-#     uuid: str
-#     degree_name: str
-#     institution_name: str
-#     graduation_year: str
-#     model_config = ConfigDict(from_attributes=True)
+class DiplomaSlim(BaseModel):
+    uuid: str
+    degree_name: str
+    institution_name: str
+    graduation_year: str
+    model_config = ConfigDict(from_attributes=True)
 
 
 class DiplomaBase(BaseModel):
@@ -82,8 +82,7 @@ class CandidateResponse(BaseModel):
 class Candidate(CandidateResponse):
     uuid: str
     experiences: List[Experience] = []
-    diplomas: List[Diploma] = []
-    graduation_year:str
+    diplomas: List[DiplomaSlim] = []
     model_config = ConfigDict(from_attributes=True)
 
 

@@ -10,3 +10,5 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMzI0MzksInN1YiI6IjNhMTM0MDh
   "email": "etoudi.bodo@example.com",
   "password": "Tw'#5&;>"
 }
+
+Generer la documentation : pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints

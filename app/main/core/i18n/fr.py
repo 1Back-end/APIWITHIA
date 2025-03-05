@@ -29,5 +29,6 @@ translation = {
     "shortlisted-candidates-found": "Des candidats retenus ont été trouvés",
     "rejected-candidates-found": "Des candidats rejetés ont été trouvés",
     "candidate-already-applied" :"Le candidat a déjà postulé",
-    "offer-expired" : "L'offre a expiré"
+    "offer-expired" : "L'offre a expiré",
+    "prediction-completed" : "La prediction est complète"
 }

@@ -9,36 +9,79 @@ from app.main.models.db.base_class import Base
 from enum import Enum
 
 
-class UserRole(str,Enum):
+class UserRole(str, Enum):
+    """
+    Enumeration for user roles.
+
+    ADMIN: Standard administrator.
+    SUPER_ADMIN: Administrator with advanced privileges.
+    """
     ADMIN = "ADMIN"
     SUPER_ADMIN = "SUPER_ADMIN"
 
-class UserStatus(str,Enum):
+
+class UserStatus(str, Enum):
+    """
+    Enumeration for user statuses.
+
+    ACTIVED: Active user.
+    UNACTIVED: Inactive user.
+    DELETED: Deleted user.
+    BLOCKED: Blocked user.
+    """
     ACTIVED = "ACTIVED"
     UNACTIVED = "UNACTIVED"
     DELETED = "DELETED"
-    BLOCKED= "BLOCKED"
+    BLOCKED = "BLOCKED"
 
 
 class User(Base):
+    """
+    Model representing a user in the system.
+
+    Attributes:
+        uuid (str): Unique identifier for the user.
+        email (str): User's email address (unique).
+        country_code (str): Country code associated with the phone number.
+        phone_number (str): User's phone number.
+        full_phone_number (str): Full phone number with country code.
+        first_name (str): User's first name.
+        last_name (str): User's last name.
+        password_hash (str): Hashed password of the user.
+        role (str): User role (ADMIN or SUPER_ADMIN).
+        otp (str): One-time password code (optional).
+        otp_expired_at (datetime): Expiration date of the OTP.
+        otp_password (str): One-time password for authentication (optional).
+        otp_password_expired_at (datetime): Expiration date of the OTP password.
+        status (str): User status (ACTIVED, UNACTIVED, etc.).
+        created_at (datetime): Timestamp of account creation.
+        updated_at (datetime): Timestamp of the last account update.
+    """
+
     __tablename__ = "users"
 
-    uuid = Column(String,primary_key=True,index=True)
-    email = Column(String,unique=True,index=True,nullable=False)
-    country_code: str = Column(String(5), nullable=False, default="", index=True)
-    phone_number: str = Column(String(20), nullable=False, default="", index=True)
-    full_phone_number: str = Column(String(25), nullable=False, default="", index=True)
-    first_name = Column(String,nullable=False)
-    last_name = Column(String, nullable=False)
-    password_hash = Column(String, nullable=False)
-    role=Column(String,nullable=False)
-    otp: str = Column(String(5), nullable=True, default="")
-    otp_expired_at: datetime = Column(DateTime, nullable=True, default=None)
-    otp_password: str = Column(String(5), nullable=True, default="")
-    otp_password_expired_at: datetime = Column(DateTime, nullable=True, default=None)
-    status = Column(String,nullable=False,default=UserStatus.ACTIVED)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    uuid = Column(String, primary_key=True, index=True)  # Unique user identifier
+    email = Column(String, unique=True, index=True, nullable=False)  # Unique email address
+    country_code = Column(String(5), nullable=False, default="", index=True)  # Country code
+    phone_number = Column(String(20), nullable=False, default="", index=True)  # Phone number
+    full_phone_number = Column(String(25), nullable=False, default="", index=True)  # Full phone number with country code
+    first_name = Column(String, nullable=False)  # First name
+    last_name = Column(String, nullable=False)  # Last name
+    password_hash = Column(String, nullable=False)  # Hashed password
+    role = Column(String, nullable=False)  # User role
+    otp = Column(String(5), nullable=True, default="")  # Temporary OTP code
+    otp_expired_at = Column(DateTime, nullable=True, default=None)  # OTP expiration date
+    otp_password = Column(String(5), nullable=True, default="")  # OTP password
+    otp_password_expired_at = Column(DateTime, nullable=True, default=None)  # OTP password expiration date
+    status = Column(String, nullable=False, default=UserStatus.ACTIVED)  # User status
+    created_at = Column(DateTime, default=func.now())  # Account creation timestamp
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())  # Last update timestamp
 
     def __repr__(self):
+        """
+        String representation of the User object.
+
+        Returns:
+            str: Representation of the user with first name, last name, and email.
+        """
         return f"User('{self.first_name} {self.last_name}', '{self.email}')"
