@@ -162,6 +162,55 @@ class CRUDCandidat(CRUDBase[models.Candidat,schemas.CandidateBase,schemas.Candid
 
         db.commit()
         return db_candidate
+    
+    @classmethod
+    def create_candidate_google(cls, db: Session, *, candidate: schemas.CandidateCreate):
+        # Créer le candidat
+        db_candidate = models.Candidat(
+            uuid=str(uuid.uuid4()),
+            first_name=candidate.first_name,
+            last_name=candidate.last_name,
+            email=candidate.email,
+            code_country=candidate.code_country,
+            phone_number=candidate.phone_number,
+            full_phone_number=f"{candidate.code_country}{candidate.phone_number}",
+            address=candidate.address,
+            avatar_uuid=candidate.avatar_uuid,
+            password=get_password_hash(candidate.password),
+            cv_uuid=candidate.cv_uuid,
+        )
+        db.add(db_candidate)
+        db.commit()
+        db.refresh(db_candidate)
+
+        # Vérifier et ajouter les expériences
+        for exp in candidate.experiences:
+            db_experience = models.Experience(
+                uuid=str(uuid.uuid4()),
+                job_title=exp.job_title,
+                company_name=exp.company_name,
+                start_date=exp.start_date,
+                end_date=exp.end_date,
+                description=exp.description,
+                candidate_uuid=db_candidate.uuid
+            )
+            db.add(db_experience)
+
+        # Ajouter les diplômes
+        for diploma in candidate.diplomas:
+            db_diploma = models.Diploma(
+                uuid=str(uuid.uuid4()),
+                degree_name=diploma.degree_name,
+                institution_name=diploma.institution_name,
+                start_year=diploma.start_year,
+                end_year=diploma.end_year,
+                graduation_year=f"{diploma.start_year}/{diploma.end_year}",  # Calculer l'année de graduation
+                candidate_uuid=db_candidate.uuid
+            )
+            db.add(db_diploma)
+
+        db.commit()
+        return db_candidate
 
 
     

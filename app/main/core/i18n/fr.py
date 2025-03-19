@@ -30,5 +30,6 @@ translation = {
     "rejected-candidates-found": "Des candidats rejetés ont été trouvés",
     "candidate-already-applied" :"Le candidat a déjà postulé",
     "offer-expired" : "L'offre a expiré",
-    "prediction-completed" : "La prediction est complète"
+    "prediction-completed" : "La prediction est complète",
+    "account-created-successfully" : "Compte créé avec succès"
 }

@@ -32,4 +32,5 @@ translation = {
     "candidate-already-applied" : "The candidate has already applied",
     "offer-expired" :"The offer has expired",
     "prediction-completed" : "The prediction has completed",
+    "account-created-successfully" : "The account has been created successfully"
 }

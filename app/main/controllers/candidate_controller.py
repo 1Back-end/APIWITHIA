@@ -42,7 +42,7 @@ async def login(
 
 
 
-@router.post("/create", response_model=schemas.Candidate)
+@router.post("/create", response_model=schemas.Msg)
 def create_candidate(
     candidate: schemas.CandidateCreate, 
     db: Session = Depends(get_db)
@@ -65,7 +65,41 @@ def create_candidate(
             raise HTTPException(status_code=404, detail=__(key="cv-not-found"))
         
     # Appel au CRUD pour créer un candidat et ses expériences
-    return crud.candidate.create(db=db,candidate=candidate)
+    return schemas.Msg(message=__(key="account-created-successfully"))
+
+# Configuration OAuth2 pour Google
+# oauth = OAuth()
+# oauth.register(
+#     name='google',
+#     client_id="VOTRE_CLIENT_ID",
+#     client_secret="VOTRE_CLIENT_SECRET",
+#     authorize_url="https://accounts.google.com/o/oauth2/auth",
+#     authorize_params={"scope": "openid email profile"},
+#     access_token_url="https://oauth2.googleapis.com/token",
+#     client_kwargs={"scope": "openid email profile"},
+# )
+
+# @router.get("/google/callback")
+# async def google_callback(
+#     candidate: schemas.CandidateCreate, 
+#     db: Session = Depends(get_db)
+# )
+#     """Créer un compte utilisateur avec Google."""
+#     token = await oauth.google.authorize_access_token(request)
+#     user_info = await oauth.google.parse_id_token(request, token)
+
+#     if not user_info:
+#         raise HTTPException(status_code=400, detail="Google authentication failed")
+
+#     # Vérifier si l'utilisateur existe déjà
+#     existing_user = crud.candidate.get_by_email(db, user_info["email"])
+    
+#     if existing_user:
+#         return {"message": "Compte déjà existant", "user": existing_user}
+
+#     # Créer un nouvel utilisateur
+#     new_candidate = crud.candidate.create_candidate_google(db, user_info)
+#     return {"message": "Compte créé avec succès", "user": new_candidate}
     
 
 @router.get("/get_many", response_model=None)
