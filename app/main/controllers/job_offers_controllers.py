@@ -30,7 +30,7 @@ def update_offers(
     return crud.offers.update(db=db,obj_in=obj_in)
 
 @router.post("/update-status",response_model=schemas.Msg)
-def create_offers(
+def update_offers(
     *,
     db: Session = Depends(get_db),
     obj_in:schemas.JobOffersUpdateStatus,

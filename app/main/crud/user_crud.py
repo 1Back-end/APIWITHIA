@@ -57,33 +57,12 @@ class CRUDUser(CRUDBase[models.User, schemas.UserCreate, schemas.UserUpdate]):
         return db_obj
     
     @classmethod
-    def actived_account(cls,db:Session,*,uuid:str):
-        user = cls.get_by_uuid(db=db,uuid=uuid)
-        if user is None:
-            raise HTTPException(status_code=404, detail=__("user-not-found"))
-        user.status = models.UserStatus.ACTIVED
-        db.commit() #
-    @classmethod
-    def deactived_account(cls,db:Session,*,uuid:str):
-        user = cls.get_by_uuid(db=db,uuid=uuid)
-        if user is None:
-            raise HTTPException(status_code=404, detail=__("user-not-found"))
-        user.status = models.UserStatus.UNACTIVED
-        db.commit() #
-    @classmethod
-    def blocked_account(cls,db:Session,*,uuid:str):
-        user = cls.get_by_uuid(db=db,uuid=uuid)
-        if user is None:
-            raise HTTPException(status_code=404, detail=__("user-not-found"))
-        user.status = models.UserStatus.BLOCKED
-        db.commit() #
-    @classmethod
-    def deleted_account(cls,db:Session,*,uuid:str):
-        user = cls.get_by_uuid(db=db,uuid=uuid)
-        if user is None:
-            raise HTTPException(status_code=404, detail=__("user-not-found"))
-        user.status = models.UserStatus.DELETED
-        db.commit() #
+    def update(cls, db: Session, *,uuid:str,status:str) -> models.User:
+        user = cls.get_by_uuid(db=db, uuid=uuid)
+        if not user:
+            raise HTTPException(status_code=404, detail=__(key="user-not-found"))
+        user.status = status
+        db.commit()
     
     
     

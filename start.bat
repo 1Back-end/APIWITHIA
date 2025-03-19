@@ -29,6 +29,24 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMzI0MzksInN1YiI6IjNhMTM0MDh
 }
 
 
+{
+  
+  "email": "john.doe12@example.com",
+  "password": "securepassword123",
+  
+}
+
+{
+  "email": "alice.123smith@example.com",
+  "password": "strongpassword456",
+}
+{
+  "email": "dev.doe@example.com",
+  "password": "SecurePassword123",
+}
+
+
+
 
 
 Generer la documentation : pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints

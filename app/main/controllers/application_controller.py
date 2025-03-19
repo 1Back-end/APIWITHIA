@@ -1,5 +1,5 @@
 from datetime import timedelta, datetime
-from typing import Any, Optional
+from typing import Any, List, Optional
 from fastapi import APIRouter, Depends, Body, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.main.core.dependencies import get_db, TokenRequired
@@ -65,4 +65,10 @@ async def get_many_offers(
         
     )
 
-
+@router.get("/get_candidate_by_offers", response_model=List[schemas.CandidateResponse])
+def get_candidate_by_offers(
+    *,
+    db: Session = Depends(get_db),
+    application_uuid: str
+):
+    return crud.application.get_candidates_by_application(db=db, application_uuid=application_uuid)

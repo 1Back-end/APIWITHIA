@@ -1,6 +1,6 @@
 from datetime import timedelta, datetime
 from typing import Any
-from fastapi import APIRouter, Depends, Body, HTTPException
+from fastapi import APIRouter, Depends, Body, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.main.core.dependencies import get_db, TokenRequired
 from app.main import schemas, crud, models
@@ -32,43 +32,16 @@ def register(
     )
     return schemas.Msg(message=__(key="user-created-successfully"))
 
-@router.put("/actived/{uuid}", response_model=schemas.Msg)
-def actived(
-    uuid: str,
+@router.put("/update-status",response_model=schemas.Msg)
+def update_status(
+    *,
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(TokenRequired(roles=["SUPER_ADMIN"]))
+    obj_in:schemas.UpdateStatus,
+    status: str = Query(..., enum=[st.value for st in models.UserStatus]),
 ):
-    # Appel de la fonction d'activation par UUID
-    crud.user.actived_account(db=db, uuid=uuid)
-    return schemas.Msg(message=__(key="user-account-activated-successfully"))
-
-
-@router.put("/deactived/{uuid}", response_model=schemas.Msg)
-def deactived(
-    uuid: str,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(TokenRequired(roles=["SUPER_ADMIN"]))
-):
-    # Appel de la fonction d'activation par UUID
-    crud.user.deactived_account(db=db, uuid=uuid)
-    return schemas.Msg(message=__(key="user-account-deactivated-successfully"))
-
-@router.put("/blocked/{uuid}", response_model=schemas.Msg)
-def blocked(
-    uuid: str,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(TokenRequired(roles=["SUPER_ADMIN"]))
-):
-    # Appel de la fonction d'activation par UUID
-    crud.user.blocked_account(db=db, uuid=uuid)
-    return schemas.Msg(message=__(key="user-account-blocked-successfully"))
-    
-@router.put("/deleted/{uuid}", response_model=schemas.Msg)
-def delete(
-    uuid: str,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(TokenRequired(roles=["SUPER_ADMIN"]))
-):
-    # Appel de la fonction d'activation par UUID
-    crud.user.deleted_account(db=db, uuid=uuid)
-    return schemas.Msg(message=__(key="user-account-deleted-successfully"))
+    crud.user.update(
+        db,
+        uuid=obj_in.uuid,
+        status=status
+    )
+    return schemas.Msg(message=__(key="user-status-updated-successfully"))

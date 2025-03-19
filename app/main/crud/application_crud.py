@@ -125,6 +125,12 @@ class CRUDApplication(CRUDBase[models.Application,schemas.ApplicationDetails,sch
             current_page=page,
             data=record_query
         )
-
+    
+    @classmethod
+    def get_candidates_by_application(cls, db: Session, *, application_uuid: str):
+        return db.query(models.Application).filter(
+            models.Application.job_offer_uuid == application_uuid,
+            models.Application.is_deleted == False
+        ).all()
         
 application = CRUDApplication(models.Application)

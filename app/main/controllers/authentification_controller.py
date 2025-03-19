@@ -14,7 +14,7 @@ from app.main.core.config import Config
 # from app.main.schemas.user import UserProfileResponse
 # from app.main.utils.helper import check_pass, generate_randon_key
 
-router = APIRouter(prefix="/auths", tags=["auths"])
+router = APIRouter(prefix="/authentification", tags=["authentification"])
 
 @router.post("/login/administrator",  response_model=schemas.UserAuthentication)
 async def login(

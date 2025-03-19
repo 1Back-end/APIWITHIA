@@ -82,3 +82,5 @@ class ResetPasswordOption3Step3(BaseModel):
     email: str
     otp: str
     new_password:str
+class UpdateStatus(BaseModel):
+    uuid: str
