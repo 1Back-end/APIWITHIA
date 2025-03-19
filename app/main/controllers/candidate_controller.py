@@ -65,6 +65,7 @@ def create_candidate(
             raise HTTPException(status_code=404, detail=__(key="cv-not-found"))
         
     # Appel au CRUD pour créer un candidat et ses expériences
+    crud.candidate.create(db=db,candidate=candidate)
     return schemas.Msg(message=__(key="account-created-successfully"))
 
 # Configuration OAuth2 pour Google

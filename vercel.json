@@ -1,16 +1,17 @@
+
+
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app/main/__init__.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app/main/__init__.py"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "app/main/__init__.py",  # Chemin vers __init__.py
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/main/__init__.py"  # Chemin vers votre __init__.py
+    }
+  ]
+}

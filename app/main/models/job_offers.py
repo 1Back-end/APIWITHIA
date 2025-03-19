@@ -60,6 +60,7 @@ class JobOffer(Base):
     uuid = Column(String, primary_key=True)  # Unique identifier (UUID)
     title = Column(String, nullable=False)  # Job title
     description = Column(Text, nullable=False)  # Detailed job description
+    domain = Column(String, nullable=True)  # Add this to the JobOffer model
     company_name = Column(String, nullable=False)  # Name of the company
     location = Column(String, nullable=False)  # Job location
     currency = Column(String, nullable=False, default="FCFA")  # Currency for the salary
